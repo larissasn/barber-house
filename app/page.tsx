@@ -1,7 +1,5 @@
-"use client"
-
-import React from "react"
+import { Button } from "./_components/ui/button"
 
 export default function page() {
-  return <h1 className="mb-5 bg-red-400 text-red-500">Hello Word</h1>
+  return <Button>Teste</Button>
 }
