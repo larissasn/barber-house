@@ -1,10 +1,11 @@
 import PhoneItem from "@/app/_components/phone-item"
 import ServiceItem from "@/app/_components/service-item"
+import SidebarSheet from "@/app/_components/sidebar-sheet"
 import { Button } from "@/app/_components/ui/button"
+import { Sheet, SheetTrigger } from "@/app/_components/ui/sheet"
 import { db } from "@/app/_lib/prisma"
-import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react"
+import { MapPinIcon, MenuIcon, StarIcon } from "lucide-react"
 import Image from "next/image"
-import Link from "next/link"
 import { notFound } from "next/navigation"
 
 interface BarbershopPageProps {
@@ -27,7 +28,6 @@ const BarberShopPage = async ({ params }: BarbershopPageProps) => {
     return notFound
   }
 
-  console.log(barbershop.services)
   return (
     <div>
       <div className="relative h-[250px] w-full">
@@ -37,25 +37,18 @@ const BarberShopPage = async ({ params }: BarbershopPageProps) => {
           fill
           className="object-cover"
         ></Image>
-
-        <Button
-          size="icon"
-          variant="secondary"
-          className="absolute left-4 top-4"
-          asChild
-        >
-          <Link href="/">
-            <ChevronLeftIcon />
-          </Link>
-        </Button>
-
-        <Button
-          size="icon"
-          variant="secondary"
-          className="absolute right-4 top-4"
-        >
-          <MenuIcon />
-        </Button>
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button
+              size="icon"
+              variant="outline"
+              className="absolute right-4 top-4"
+            >
+              <MenuIcon />
+            </Button>
+          </SheetTrigger>
+          <SidebarSheet />
+        </Sheet>
       </div>
 
       <div className="border-b border-solid p-5">
